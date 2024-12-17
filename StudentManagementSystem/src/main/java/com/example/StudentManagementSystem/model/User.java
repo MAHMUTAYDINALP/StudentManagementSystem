@@ -28,8 +28,6 @@ public class User {
 
     @Column(name = "Email", nullable = false, unique = true)
     private String email;
-    
-    @ManyToOne
-    @JoinColumn(name = "ConnectionID")                              //ilişkiyi de bu şekilde kodladım
-    private Student student;
+
 }
+    

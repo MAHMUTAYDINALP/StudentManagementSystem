@@ -11,7 +11,8 @@ import lombok.Setter;                   //aynı şekilde gerekli aynı kütüpha
 public class Course {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)             // pk olarak tanımladım
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  
+    @Column (name="LessonID")           // pk olarak tanımladım
     private Long CourseID ;
 
     @Column(name = "LessonName", nullable = false)                  //null olamaz       
@@ -32,5 +33,14 @@ public class Course {
     @ManyToOne
     @JoinColumn(name = "AcademicianID", nullable = false)
     private Academician academician;
+
+    public boolean isMandatory() {
+        return isMandatory;
+    }
+    
+    public void setMandatory(boolean mandatory) {
+        isMandatory = mandatory;
+    }
+    
     
 }

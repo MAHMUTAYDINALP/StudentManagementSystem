@@ -30,4 +30,23 @@ import lombok.Setter;       //setter metotlarını otomatik oluşturabilecek kü
         @Column(name = "Department")
         private String department;
 
+                
+
+        public String getFirstName() {
+            return firstName;
+        }
+
+        public void setFirstName(String firstName) {
+            this.firstName = firstName;
+        }
+
+        public String getLastName() {
+            return lastName;
+        }
+
+        public void setLastName(String lastName) {
+            this.lastName = lastName;
+        }
+            
+                
     }
