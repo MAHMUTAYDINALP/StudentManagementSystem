@@ -2,7 +2,11 @@ package com.example.StudentManagementSystem.service;
 
 import com.example.StudentManagementSystem.model.User;
 import com.example.StudentManagementSystem.repository.UserRepository;
+
+import org.springframework.http.HttpStatus;
+//import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,8 +27,13 @@ public class UserService {
     }
 
     //id ile kullanıcı getiren fonksiyon
-    public Optional<User> getUserById(Long id) {
-        return userRepository.findById(id);
+    public User getUserById(Long id) {
+        Optional<User> user=userRepository.findById(id);
+        if(user.isPresent()){
+
+            return user.get();            
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND,"user not found");
     }
 
     // Yeni  kullanıcı ekleyen fonksiyon

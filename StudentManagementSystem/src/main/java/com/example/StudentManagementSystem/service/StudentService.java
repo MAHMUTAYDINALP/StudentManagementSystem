@@ -2,7 +2,12 @@ package com.example.StudentManagementSystem.service;
 
 import com.example.StudentManagementSystem.model.Student;
 import com.example.StudentManagementSystem.repository.StudentRepository;
+//import com.example.StudentManagementSystem.repository.UserRepository;
+
+import org.springframework.http.HttpStatus;
+//import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,9 +28,16 @@ public class StudentService {
     }
 
     // id ile ögrneic getiren fonkisyon
-    public Optional<Student> getStudentById(Long id) {
-        return studentRepository.findById(id);
+    public Student getStudentById(Long id) {
+       Optional<Student> student=studentRepository.findById(id);
+       if(student.isPresent()){
+
+        return student.get();
+        }
+
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND,"student mot found");
     }
+
 
     // ögrenci ekleyen fonkisyon
     public Student addStudent(Student student) {

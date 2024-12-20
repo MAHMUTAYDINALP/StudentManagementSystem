@@ -1,8 +1,13 @@
 package com.example.StudentManagementSystem.service;
 
 import com.example.StudentManagementSystem.model.Academician;
+//import com.example.StudentManagementSystem.model.User;
 import com.example.StudentManagementSystem.repository.AcademicianRepository;
+//import com.example.StudentManagementSystem.repository.UserRepository;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,6 +17,10 @@ public class AcademicianService {
 
     private final AcademicianRepository academicianRepository;
 
+    public Academician createAcademician(Academician academician) {
+        return academicianRepository.save(academician);
+    }
+
     public AcademicianService(AcademicianRepository academicianRepository) {  
         this.academicianRepository = academicianRepository;
     }
@@ -20,8 +29,14 @@ public class AcademicianService {
         return academicianRepository.findAll();
     }
 
-    public Optional<Academician> getAcademicianById(Long id) {              //id ile akadmisyen getiren fonkisyon
-        return academicianRepository.findById(id);
+    public Academician getAcademicianById(Long id) {              //id ile akadmisyen getiren fonkisyon
+        Optional<Academician> academician=academicianRepository.findById(id);
+        if(academician.isPresent()){
+
+            return academician.get();
+        }
+        
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND,"user not found ");
     }
 
     public Academician addAcademician(Academician academician) {        // akademisyen ekleyen fonksiyon

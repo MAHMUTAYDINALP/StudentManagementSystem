@@ -3,7 +3,11 @@ package com.example.StudentManagementSystem.service;
 
 import com.example.StudentManagementSystem.model.StudentSelectedCourse;
 import com.example.StudentManagementSystem.repository.StudentSelectedCourseRepository;
+
+import org.springframework.http.HttpStatus;
+//import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,8 +28,12 @@ public class StudentSelectedCourseService {
     }
 
     // id ile ders getiren fonksiyon
-    public Optional<StudentSelectedCourse> getStudentSelectedCourseById(Long id) {
-        return studentSelectedCourseRepository.findById(id);
+    public StudentSelectedCourse getStudentSelectedCourseById(Long id) {
+       Optional<StudentSelectedCourse> studentselectedcourse=studentSelectedCourseRepository.findById(id);
+        if(studentselectedcourse.isPresent()){
+            return studentselectedcourse.get();
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND,"student selected course not found");
     }
 
     // Yeni  ders  ekleyen fonksiyon
@@ -50,4 +58,5 @@ public class StudentSelectedCourseService {
     public void deleteStudentSelectedCourse(Long id) {
         studentSelectedCourseRepository.deleteById(id);
     }
+    
 }

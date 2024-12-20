@@ -1,6 +1,7 @@
 package com.example.StudentManagementSystem.controller;
 
 import com.example.StudentManagementSystem.model.Student;
+//import com.example.StudentManagementSystem.model.User;
 import com.example.StudentManagementSystem.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,12 +25,20 @@ public class StudentController {
         return studentService.getAllStudents();
     }
 
-    @GetMapping("/{id}")
+    /*@GetMapping("/{id}")
     public ResponseEntity<Student> getStudentById(@PathVariable Long id) {
         return studentService.getStudentById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+*/
+
+    
+     @GetMapping("/{id}")                        //dogru olan bu
+    public ResponseEntity<Student> getStudentById(@PathVariable Long id) {
+        return ResponseEntity.ok(studentService.getStudentById(id));
+    }
+
 
     @PostMapping
     public Student addStudent(@RequestBody Student student) {

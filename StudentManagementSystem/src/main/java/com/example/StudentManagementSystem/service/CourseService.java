@@ -1,8 +1,12 @@
 package com.example.StudentManagementSystem.service;
 
+//import com.example.StudentManagementSystem.model.Academician;
 import com.example.StudentManagementSystem.model.Course;
 import com.example.StudentManagementSystem.repository.CourseRepository;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,14 +20,27 @@ public class CourseService {
         this.courseRepository = courseRepository;
     }
 
+    public Course createCourse(Course course) {
+        return courseRepository.save(course);
+    }
+    
     // Tüm dersleri lisyetleyen fonksiyon
     public List<Course> getAllCourses() {
         return courseRepository.findAll();
     }
 
     // ıd ile ders listeleyyen fonksiyon
-    public Optional<Course> getCourseById(Long id) {
+   /*  public Optional<Course> getCourseById(Long id) {
         return courseRepository.findById(id);
+    }*/
+    public Course getCourseById(Long id) {              //id ile akadmisyen getiren fonkisyon
+        Optional<Course> course=courseRepository.findById(id);
+        if(course.isPresent()){
+
+            return course.get();
+        }
+        
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND,"user not found ");
     }
 
     // ders ekleyen fonksiyon 
