@@ -58,8 +58,8 @@ Projeyi kendi bilgisayarınızda test etmek için aşağıdaki adımları izleye
 
 ### 2. Backend'i Başlatma (Java Spring Boot)
 Backend servisi **Maven** ile yönetilmektedir. Terminali açın ve şu komutları girin:
-```bash
-# Proje dizinine gidin
+
+ Proje dizinine gidin
 cd backend
 
 # Maven kullanarak Spring Boot uygulamasını başlatın
