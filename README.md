@@ -37,10 +37,41 @@ Backend tarafında, her bir varlık (Student, Academician, Course, User) için s
 <img width="1536" height="869" alt="students post api test " src="https://github.com/user-attachments/assets/ee52fea9-2962-4528-81a1-33b7d21d18ee" />
 <img width="1533" height="862" alt="academicians put api test " src="https://github.com/user-attachments/assets/9465496e-27fa-4b31-934f-55ec8a8f0340" />
 <img width="1536" height="866" alt="academicians delete api test" src="https://github.com/user-attachments/assets/4c6e0c29-b36a-447e-a793-2d2d485f3d64" />
+<img width="1867" height="1044" alt="klasör yapısı" src="https://github.com/user-attachments/assets/9c9411fb-9ff0-4cda-91ea-fdccf5d1122d" />
 
 
 
 
+
+
+
+---
+
+## 🚀 Kurulum ve Çalıştırma Rehberi
+
+Projeyi kendi bilgisayarınızda test etmek için aşağıdaki adımları izleyebilirsiniz:
+
+### 1. Veritabanı Hazırlığı (SQL)
+1. Bilgisayarınızda (MySQL/PostgreSQL) yeni bir veritabanı oluşturun.
+2. `database` klasörünün içindeki SQL scriptini çalıştırarak tabloları ve test verilerini içeri aktarın.
+3. Backend klasöründeki `src/main/resources/application.properties` dosyasına giderek veritabanı url, kullanıcı adı ve şifrenizi kendi sisteminize göre güncelleyin.
+
+### 2. Backend'i Başlatma (Java Spring Boot)
+Backend servisi **Maven** ile yönetilmektedir. Terminali açın ve şu komutları girin:
+```bash
+# Proje dizinine gidin
+cd backend
+
+# Maven kullanarak Spring Boot uygulamasını başlatın
+mvn spring-boot:run
+(Sunucu başarıyla çalıştığında API'ler http://localhost:8080 adresinden dinlemeye başlayacaktır.)
+
+3. Frontend'i Çalıştırma
+Arayüz statik web dosyalarından (HTML/CSS/JS) oluşmaktadır. Ekstra bir Node.js kurulumuna gerek yoktur:
+
+frontend klasörüne gidin.
+
+index.html dosyasını doğrudan tarayıcıda açın veya VS Code Live Server eklentisi ile başlatın.
 
 
 ---
@@ -56,4 +87,5 @@ Uygulamanın arka yüzü `localhost:8080/api/` üzerinden hizmet vermektedir:
 Geliştiren: Mahmut AydınAlp
 
 https://www.linkedin.com/in/mahmut-ayd%C4%B1nalp-659875282/
+
 https://github.com/MAHMUTAYDINALP
